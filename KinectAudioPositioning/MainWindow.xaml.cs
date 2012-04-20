@@ -32,9 +32,15 @@ namespace KinectAudioPositioning
         /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            kinectMic = new KinectMicArray();
-            kinectMic.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(kinectMic_PropertyChanged);
-            DrawContents();
+            try {
+                kinectMic = new KinectMicArray();
+                kinectMic.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler( kinectMic_PropertyChanged );
+                DrawContents();
+            }
+            catch ( Exception ex ) {
+                MessageBox.Show( ex.Message );
+                Close();
+            }
         }
         /// <summary>
         /// Event handler to care KinectMicArray property changed

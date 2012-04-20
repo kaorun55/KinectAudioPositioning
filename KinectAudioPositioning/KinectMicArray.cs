@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Threading;
-using Microsoft.Research.Kinect.Audio;   
+using Microsoft.Kinect;
 
 namespace KinectAudioPositioning
 {
@@ -30,6 +30,15 @@ namespace KinectAudioPositioning
         // Constructor
         public KinectMicArray()
         {
+            if ( KinectSensor.KinectSensors.Count == 0 ) {
+                throw new Exception( "Kinectを接続してください" );
+            }
+
+            kinect = KinectSensor.KinectSensors[0];
+            if ( kinect.Status != KinectStatus.Connected ) {
+                throw new Exception( "Kinectや電源が正しく接続されているか確認してください" );
+            }
+
             _sourceAngle = 0.0;
             _beamAngle = 0.0;
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
@@ -52,6 +61,7 @@ namespace KinectAudioPositioning
         }
         #endregion Constructors
 
+        private KinectSensor kinect = null;
         private BackgroundWorker worker = new BackgroundWorker();
         private double _sourceAngle;
         private double _beamAngle;
@@ -81,22 +91,20 @@ namespace KinectAudioPositioning
         /// </summary>
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (var source = new KinectAudioSource())
+            // Initialize Kinect
+            KinectAudioSource source = kinect.AudioSource;
+            source.BeamAngleChanged +=
+                new EventHandler<BeamAngleChangedEventArgs>( AudioSource_BeamAngleChanged );
+            source.SoundSourceAngleChanged +=
+                new EventHandler<SoundSourceAngleChangedEventArgs>( AudioSource_SoundSourceAngleChanged );
+            kinect.Start();
+
+            //Start capturing audio                               
+            using (var audioStream = source.Start())
             {
-                source.SystemMode = SystemMode.OptibeamArrayOnly;
-                source.BeamChanged += audio_BeamChanged;
-                //Start capturing audio                               
-                using (var audioStream = source.Start())
+                while (worker != null)
                 {
-                    while (worker != null)
-                    {
-                        if (source.SoundSourcePositionConfidence > 0.9)
-                        {
-                            _sourceAngle = RadToDeg(-source.SoundSourcePosition);
-                            worker.ReportProgress(0,"Source");
-                        }
-                        Thread.Sleep(sleep);
-                    }
+                    Thread.Sleep(sleep);
                 }
             }
         }
@@ -104,10 +112,25 @@ namespace KinectAudioPositioning
         /// <summary>
         /// Get Curretn Beam Angle 
         /// </summary>
-        private void audio_BeamChanged(object sender, BeamChangedEventArgs e)
+        void AudioSource_BeamAngleChanged( object sender, BeamAngleChangedEventArgs e )
         {
-            _beamAngle = RadToDeg(-e.Angle);
-            worker.ReportProgress(0, "Beam");
+            _beamAngle = -e.Angle;
+            if ( worker != null ) {
+                worker.ReportProgress( 0, "Beam" );
+            }
+        }
+
+        /// <summary>
+        /// Get Curretn Audio Source Angle 
+        /// </summary>
+        void AudioSource_SoundSourceAngleChanged( object sender, SoundSourceAngleChangedEventArgs e )
+        {
+            if ( e.ConfidenceLevel > 0.9 ) {
+                _sourceAngle = -e.Angle;
+                if ( worker != null ) {
+                    worker.ReportProgress( 0, "Source" );
+                }
+            }
         }
 
         #endregion BackgroundWorker
