@@ -1,7 +1,5 @@
-KinectAudioPosition
+KinectAudioPositioning
 =======================================
-http://KinectAudioPosition.codeplex.com
-
 
 Description
 -----------
@@ -16,8 +14,10 @@ Change History
 
 * 20151029
 [George Birbilis / Zoomicon.com]
-- Since original repository seem to be abandoned, forking from Kaoru Nakamura's port to Kinect SDK 1.0 at https://github.com/kaorun55/KinectAudioPositioning
+- Since original repository seem to be abandoned, forking (at http://github.com/birbilis/KinectAudioPositioning)
+from Kaoru Nakamura's independent port to Kinect SDK 1.0 (at https://github.com/kaorun55/KinectAudioPositioning)
 and replacing his code that was still using background workers (they don't seem to be needed in WPF and Kinect SDK 1.8)
+- Split into separate KinectAudioPositioning library and KinectAudioPositioning.WPF demo application using that library
 
 * 20151024
 [George Birbilis / Zoomicon.com]
@@ -28,4 +28,4 @@ and replacing his code that was still using background workers (they don't seem 
 
 * 20110706
 [Hiroyuki Kawanishi / Evangelist @Microsoft Japan]
-- Original version
+- Original version (http://KinectAudioPosition.codeplex.com)

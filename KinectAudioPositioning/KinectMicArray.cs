@@ -1,6 +1,6 @@
 ﻿//Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 //Filename: KinectMicArray.cs
-//Version: 20151024
+//Version: 20151029
 
 /*
 Note: Ported to Kinect SDK v1.8 by George Birbilis / Zoomicon.com - At older Kinect Beta SDK:
@@ -20,7 +20,7 @@ using System.IO;
 
 namespace KinectAudioPositioning
 {
-  class KinectMicArray : INotifyPropertyChanged
+  public class KinectMicArray : INotifyPropertyChanged
   {
 
     #region --- Constants ---
