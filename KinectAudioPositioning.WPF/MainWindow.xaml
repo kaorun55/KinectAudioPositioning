@@ -1,7 +1,7 @@
 ﻿<!--
 Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 Filename: MainWindow.xaml
-Version: 20151024
+Version: 20151119
 -->
 
 <Window
@@ -11,8 +11,9 @@ Version: 20151024
 
   Width="800" Height="600"
   WindowStartupLocation="CenterScreen"
+  Icon="Kinect.ico"
   Title="Kinect Audio Positioning (http://KinectAudioPosition.codeplex.com)"
-  
+
   Loaded="Window_Loaded"
   SizeChanged="Window_SizeChanged"
   Closing="Window_Closing"
