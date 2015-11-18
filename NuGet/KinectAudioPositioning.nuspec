@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>KinectAudioPositioning</id>
+        <version>1.0.0</version>
+        <title>KinectAudioPositioning</title>
+        <authors>kaorun55,birbilis</authors>
+        <owners>kaorun55,birbilis</owners>
+        <licenseUrl>https://github.com/birbilis/KinectAudioPositioning/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/birbilis/KinectAudioPositioning</projectUrl>
+        <iconUrl>https://github.com/birbilis/KinectAudioPositioning/blob/master/NuGet/Kinect.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <developmentDependency>true</developmentDependency>
+        <description>Easy access to Kinect sensor's Audio Positioning features</description>
+        <releaseNotes />
+        <copyright>Copyright 2015</copyright>
+        <tags>Kinect Sensors Audio Positioning</tags>
+        <dependencies>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\KinectAudioPositioning\bin\Release\KinectAudioPositioning.dll" target="lib\net40\KinectAudioPositioning.dll" />
+    </files>
+</package>

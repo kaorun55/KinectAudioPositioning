@@ -4,7 +4,7 @@ KinectAudioPositioning
 Description
 -----------
 
-This project is a WPF C# program for Kinect for Windows SDK, presenting the Kinect sensor's Audio Positioning features.
+This project is a C# library and WPF demo program for Kinect for Windows SDK, providing easy access to Kinect sensor's Audio Positioning features.
 It provides KinectMicArray class (implementing INotifyPropertyChanged).
 This class exposes beam angle and estimated audio source angle with notification of the change.
 These properties are binded to the angle of respective colored lines to show the change dynamically.

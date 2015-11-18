@@ -1,6 +1,6 @@
 ﻿//Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 //Filename: MainWindow.xaml.cs
-//Version: 20151024
+//Version: 20151119
 
 using System;
 using System.Windows;
@@ -139,8 +139,7 @@ namespace KinectAudioPositioning
     /// <param name="e"></param>
     private void kinectMic_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-      KinectMicArray ka = sender as KinectMicArray;
-      myLabel.Content = string.Format(TEXT_STATUS, ka.BeamAngle, ka.SourceAngle);
+      myLabel.Content = string.Format(TEXT_STATUS, kinectMic.BeamAngle, kinectMic.SourceAngle);
       DrawContents();
     }
 
