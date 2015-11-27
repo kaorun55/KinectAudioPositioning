@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/birbilis/KinectAudioPositioning/blob/master/NuGet/Kinect.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>true</developmentDependency>
-    <description>WPF UI for displaying Source and Beam angles returned by KinectAudioPositioning's KinectMicArray control</description>
+    <description>WPF UI for displaying Source and Beam angles returned via KinectAudioPositioning. UI is available in the form of a UserControl that wraps a KinectMicArray control, exposed via a readonly property.</description>
     <releaseNotes />
     <copyright>Copyright 2015</copyright>
     <tags>Kinect Sensors Audio Positioning WPF UI</tags>
