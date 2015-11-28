@@ -1,6 +1,6 @@
 ﻿//Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 //Filename: KinectAudioPositioningUI.xaml.cs
-//Version: 20151127
+//Version: 20151128
 
 using System;
 using System.Windows;
@@ -103,6 +103,8 @@ namespace KinectAudioPositioning.WPF
     /// </summary>
     private void DrawContents()
     {
+      if (!myCanvas.IsLoaded) return;
+
       myCanvas.Children.Clear();
 
       Image kinectImage = FindResource("KinectImage") as Image;
@@ -175,8 +177,7 @@ namespace KinectAudioPositioning.WPF
     /// </summary>
     private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
     {
-      if (myCanvas.IsLoaded)
-        DrawContents();
+      DrawContents();
     }
 
     /// <summary>

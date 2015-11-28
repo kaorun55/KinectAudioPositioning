@@ -1,7 +1,7 @@
 ﻿<!--
 Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 Filename: MainWindow.xaml
-Version: 20151127
+Version: 20151128
 -->
 
 <Window
@@ -18,7 +18,9 @@ Version: 20151127
   >
 
   <Grid>
-    <pos:KinectAudioPositioningUI x:Name="KinectAudioPos"/>
+    <pos:KinectAudioPositioningUI
+      x:Name="KinectAudioPos"
+      />
   </Grid>
 
 </Window>
