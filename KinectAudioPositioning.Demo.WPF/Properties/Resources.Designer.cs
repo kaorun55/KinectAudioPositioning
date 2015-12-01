@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KinectAudioPositioning.Demo.WPF.Demo.WPF.Properties {
+namespace KinectAudioPositioning.Demo.WPF.Properties {
     using System;
     
     
