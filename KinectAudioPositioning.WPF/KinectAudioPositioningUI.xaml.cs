@@ -1,6 +1,6 @@
 ﻿//Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 //Filename: KinectAudioPositioningUI.xaml.cs
-//Version: 20151128
+//Version: 20151201
 
 using System;
 using System.Windows;
@@ -20,7 +20,7 @@ namespace KinectAudioPositioning.WPF
 
     #region --- Constants ---
 
-    private const string TEXT_STATUS = "Beam = {0:F} (blue), Source = {1:F} (orange) angles in degrees";
+    protected const string TEXT_STATUS = "Beam = {0:F} (blue), Source = {1:F} (orange) angles in degrees";
 
     #endregion
 
@@ -47,12 +47,8 @@ namespace KinectAudioPositioning.WPF
     {
       if (!disposedValue)
       {
-        if (disposing)
-        {
-          // Dispose managed state (managed objects)
-          kinectMic.Dispose();
-          kinectMic = null;
-        }
+        if (disposing) // Dispose managed state (managed objects)
+          Cleanup();
 
         // Note: free unmanaged resources (unmanaged objects) and override a finalizer below.
         // set large fields to null.
@@ -76,6 +72,12 @@ namespace KinectAudioPositioning.WPF
       // GC.SuppressFinalize(this);
     }
 
+    public void Cleanup()
+    {
+      kinectMic.Dispose();
+      kinectMic = null;
+    }
+    
     #endregion
 
     #region --- Properties ---

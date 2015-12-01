@@ -1,6 +1,6 @@
 ﻿//Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
 //Filename: MainWindow.xaml.cs
-//Version: 20151127
+//Version: 20151201
 
 using System;
 using System.Windows;
@@ -31,7 +31,7 @@ namespace KinectAudioPositioning.Demo.WPF
     /// </summary>
     private void Window_Closing(object sender, EventArgs e)
     {
-      KinectAudioPos.Dispose(); //probably not needed if WPF calls Dispose automatically on controls that implement IDisposable, but to be safe call Dispose anyway (it ignores subsequent calls)
+      KinectAudioPos.Cleanup(); //probably not needed if WPF calls Dispose automatically on controls that implement IDisposable, but to be safe call Dispose anyway (it ignores subsequent calls)
     }
 
     #endregion
