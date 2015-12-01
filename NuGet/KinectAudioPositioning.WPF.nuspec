@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>KinectAudioPositioning.WPF</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>KinectAudioPositioning.WPF</title>
     <authors>kaorun55,birbilis</authors>
     <owners>kaorun55,birbilis</owners>
@@ -16,7 +16,7 @@
     <copyright>Copyright 2015</copyright>
     <tags>Kinect Sensors Audio Positioning WPF UI</tags>
     <dependencies>
-      <group targetFramework=".NETFramework4.0-client">
+      <group targetFramework="net40-client">
         <dependency id="KinectAudioPositioning" version="1.0.2" />
       </group>
     </dependencies>
