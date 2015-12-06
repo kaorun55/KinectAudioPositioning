@@ -1,6 +1,6 @@
 ﻿//Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
-//Filename: MainWindow.xaml.cs
-//Version: 20151119
+//Filename: KinectAudioPositioningUI.xaml.cs
+//Version: 20151201
 
 using System;
 using System.Windows;
@@ -9,32 +9,82 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace KinectAudioPositioning
+namespace KinectAudioPositioning.WPF
 {
 
   /// <summary>
   /// MainWindow.xaml
   /// </summary>
-  public partial class MainWindow : Window
+  public partial class KinectAudioPositioningUI : UserControl, IDisposable
   {
 
     #region --- Constants ---
 
-    private const string TEXT_STATUS = "Beam = {0:F} (blue), Source = {1:F} (orange) angles in degrees";
+    protected const string TEXT_STATUS = "Beam = {0:F} (blue), Source = {1:F} (orange) angles in degrees";
 
     #endregion
 
     #region --- Fields ---
 
-    private KinectMicArray kinectMic;
+    protected KinectMicArray kinectMic;
 
     #endregion
 
     #region --- Initialization ---
 
-    public MainWindow()
+    public KinectAudioPositioningUI()
     {
       InitializeComponent();
+    }
+
+    #endregion
+
+    #region --- Cleanup ---
+
+    private bool disposedValue = false; // To detect redundant calls
+
+    protected virtual void Dispose(bool disposing)
+    {
+      if (!disposedValue)
+      {
+        if (disposing) // Dispose managed state (managed objects)
+          Cleanup();
+
+        // Note: free unmanaged resources (unmanaged objects) and override a finalizer below.
+        // set large fields to null.
+
+        disposedValue = true;
+      }
+    }
+
+    // Note: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+    // ~KinectAudioPositioningUI() {
+    //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+    //   Dispose(false);
+    // }
+
+    // This code added to correctly implement the disposable pattern.
+    public void Dispose()
+    {
+      // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+      Dispose(true);
+      // Note: uncomment the following line if the finalizer is overridden above.
+      // GC.SuppressFinalize(this);
+    }
+
+    public void Cleanup()
+    {
+      kinectMic.Dispose();
+      kinectMic = null;
+    }
+    
+    #endregion
+
+    #region --- Properties ---
+
+    public KinectMicArray KinectMicArray
+    {
+      get { return kinectMic; }
     }
 
     #endregion
@@ -55,6 +105,8 @@ namespace KinectAudioPositioning
     /// </summary>
     private void DrawContents()
     {
+      if (!myCanvas.IsLoaded) return;
+
       myCanvas.Children.Clear();
 
       Image kinectImage = FindResource("KinectImage") as Image;
@@ -112,10 +164,10 @@ namespace KinectAudioPositioning
     #region --- Events ---
 
     /// <summary>
-    /// Event handler to care Window loaded
+    /// Event handler to cater for UserControl loaded
     /// Construct KinectMicArray and draw contents
     /// </summary>
-    private void Window_Loaded(object sender, RoutedEventArgs e)
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
       kinectMic = new KinectMicArray() { AngleMultiplier = -1.0 };
       kinectMic.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(kinectMic_PropertyChanged);
@@ -123,12 +175,11 @@ namespace KinectAudioPositioning
     }
 
     /// <summary>
-    /// Event handler to care window closing
-    /// KinectMicArray object should be disposed in order to release hardware resources
+    /// Event handler to carer for UserControl size changed
     /// </summary>
-    private void Window_Closing(object sender, EventArgs e)
+    private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
     {
-      kinectMic.Dispose();
+      DrawContents();
     }
 
     /// <summary>
@@ -141,15 +192,6 @@ namespace KinectAudioPositioning
     {
       myLabel.Content = string.Format(TEXT_STATUS, kinectMic.BeamAngle, kinectMic.SourceAngle);
       DrawContents();
-    }
-
-    /// <summary>
-    /// Event handler to care window size changed
-    /// </summary>
-    private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-    {
-      if (myCanvas.IsLoaded)
-        DrawContents();
     }
 
     #endregion

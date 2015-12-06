@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>KinectAudioPositioning</id>
-        <version>1.0.0</version>
+        <version>1.0.4</version>
         <title>KinectAudioPositioning</title>
         <authors>kaorun55,birbilis</authors>
         <owners>kaorun55,birbilis</owners>
@@ -19,6 +19,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\KinectAudioPositioning\bin\Release\KinectAudioPositioning.dll" target="lib\net40\KinectAudioPositioning.dll" />
+        <file src="..\KinectAudioPositioning\bin\Release\KinectAudioPositioning.dll" target="lib\net40-client\KinectAudioPositioning.dll" />
     </files>
 </package>

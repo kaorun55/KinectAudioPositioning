@@ -1,0 +1,38 @@
+﻿<!--
+Project: KinectAudioPosition (http://KinectAudioPosition.codeplex.com/)
+Filename: KinectAudioPositionUI.xaml
+Version: 20151128
+-->
+
+<UserControl
+  x:Class="KinectAudioPositioning.WPF.KinectAudioPositioningUI"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+  Loaded="UserControl_Loaded"
+  SizeChanged="UserControl_SizeChanged"
+  >
+
+  <UserControl.Resources>
+    <Image x:Key="KinectImage" Source="Images/KinectImage.png" />
+  </UserControl.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition Height="35" />
+    </Grid.RowDefinitions>
+
+    <Viewbox Grid.Row="0" Stretch="Uniform">
+      <Canvas x:Name="myCanvas" Width="500" Height="200" />
+    </Viewbox>
+
+    <Label
+      x:Name="myLabel"
+      Grid.Row="1"
+      FontSize="18"
+      Content="Audio Positioning"
+      />
+  </Grid>
+
+</UserControl>
