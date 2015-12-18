@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24627.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7800448B-26F4-4DD6-A1CD-7980FB0A8E6C}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,6 +21,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectAudioPositioning.Demo.WPF", "KinectAudioPositioning.Demo.WPF\KinectAudioPositioning.Demo.WPF.csproj", "{0110CED4-0DE3-4C46-8FC2-99DC509A0E0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectAudioPositioning.WPF", "KinectAudioPositioning.WPF\KinectAudioPositioning.WPF.csproj", "{A43D245A-AA96-4FFB-9D03-3B95B4CED309}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{312C0D68-1A59-4441-A7BA-6AB598FB23C4}"
+	ProjectSection(SolutionItems) = preProject
+		KinectAudioPositioning\KinectAudioPositioning.cd = KinectAudioPositioning\KinectAudioPositioning.cd
+		KinectAudioPositioning.WPF\KinectAudioPositioning.WPF.cd = KinectAudioPositioning.WPF\KinectAudioPositioning.WPF.cd
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
